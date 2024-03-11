@@ -1,0 +1,69 @@
+{
+  "kind": "youtube#videoListResponse",
+  "etag": "OWkB-lIcxt4rKvAsAuX-v8LScNk",
+  "items": [
+    {
+      "kind": "youtube#video",
+      "etag": "OxVKrMhqjaxUo7EAcHkicEAQtDc",
+      "id": "7lCDEYXw3mM",
+      "snippet": {
+        "publishedAt": "2012-06-20T23:12:38Z",
+        "channelId": "UC_x5XG1OV2P6uZZ5FSM9Ttw",
+        "title": "Google I/O 101: Q&A On Using Google APIs",
+        "description": "Antonio Fuentes speaks to us and takes questions on working with Google APIs and OAuth 2.0.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/7lCDEYXw3mM/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/7lCDEYXw3mM/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/7lCDEYXw3mM/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Google for Developers",
+        "tags": ["api", "gdl", "i-o"],
+        "categoryId": "28",
+        "liveBroadcastContent": "none",
+        "localized": {
+          "title": "Google I/O 101: Q&A On Using Google APIs",
+          "description": "Antonio Fuentes speaks to us and takes questions on working with Google APIs and OAuth 2.0."
+        }
+      },
+      "contentDetails": {
+        "duration": "PT15M51S",
+        "dimension": "2d",
+        "definition": "hd",
+        "caption": "true",
+        "licensedContent": false,
+        "contentRating": {},
+        "projection": "rectangular"
+      },
+      "status": {
+        "uploadStatus": "processed",
+        "privacyStatus": "public",
+        "license": "youtube",
+        "embeddable": true,
+        "publicStatsViewable": true,
+        "madeForKids": false
+      },
+      "statistics": {
+        "viewCount": "13150",
+        "likeCount": "84",
+        "favoriteCount": "0",
+        "commentCount": "12"
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 1,
+    "resultsPerPage": 1
+  }
+}
