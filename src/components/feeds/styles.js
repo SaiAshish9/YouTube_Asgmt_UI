@@ -119,6 +119,7 @@ export const VideoDesc = styled.p`
   font-size: 0.72rem;
   font-weight: 500;
   padding-top: 0.4rem;
+  overflow-y: hidden;
 `;
 
 export const AvatarContainer = styled.div`

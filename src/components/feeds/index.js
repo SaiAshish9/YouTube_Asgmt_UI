@@ -102,7 +102,11 @@ const Feeds = () => {
                 />
                 <AvatarText>Sai Ashish</AvatarText>
               </AvatarContainer>
-              <VideoDesc>{data.description}</VideoDesc>
+              <VideoDesc>
+                {data.description.length > 500
+                  ? data.description.substring(0, 500) + "..."
+                  : data.description}
+              </VideoDesc>
             </VideoContent>
           </FeedsContainer>
         ))}
