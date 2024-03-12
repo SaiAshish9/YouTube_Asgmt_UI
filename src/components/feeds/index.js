@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   TagsContainer,
@@ -21,6 +21,8 @@ import {
 } from "./styles";
 
 import FiltersSvg from "../../assets/filters.svg";
+import axios from "axios";
+import Moment from "react-moment";
 
 const tags = [
   "All",
@@ -33,7 +35,38 @@ const tags = [
   "Playlists",
 ];
 
+const API_URL = "http://localhost:8000/api/u/youtube/videos/?limit=10";
+
 const Feeds = () => {
+  const [data, setData] = useState([]);
+
+  function fetchYTVideos() {
+    axios(API_URL)
+      .then((response) => {
+        let jsonResponse = response.data.results;
+        jsonResponse = jsonResponse.map((resp) => {
+          const mdImg = resp.thumbnail_urls
+            .split(",")
+            .filter((img) => img.includes("mqdefault"))?.[0];
+          let duration = resp.duration?.slice(2, resp.duration?.length - 1);
+          duration = duration?.replace("M", ":");
+          duration = duration?.replace("H", ":");
+          return {
+            ...resp,
+            thumbnail_img: mdImg,
+            duration,
+            publishing_date: <Moment fromNow>{data.publishing_date}</Moment>,
+          };
+        });
+        setData(jsonResponse);
+      })
+      .catch((error) => console.log(error));
+  }
+
+  useEffect(() => {
+    fetchYTVideos();
+  }, []);
+
   return (
     <Wrapper>
       <Container>
@@ -51,18 +84,17 @@ const Feeds = () => {
           </FiltersContainer>
         </TagsContent>
 
-        {[...Array(100).keys()].map((data) => (
-          <FeedsContainer key={data}>
+        {data?.map((data) => (
+          <FeedsContainer key={data.id}>
             <VideoContainer>
-              <VideoImg
-                src="https://ergonotes.com/wp-content/uploads/2022/11/Find-YouTube-Thumbnail-Source.jpg"
-                alt="img"
-              />
-              <ContentDuration>16:14</ContentDuration>
+              <VideoImg src={data.thumbnail_img} alt="img" />
+              <ContentDuration>{data.duration}</ContentDuration>
             </VideoContainer>
             <VideoContent>
-              <VideoTitle>Jnjjj</VideoTitle>
-              <VideoDesc>59 views • 4 years ago</VideoDesc>
+              <VideoTitle>{data.title}</VideoTitle>
+              <VideoDesc>
+                {data.view_count} views • {data.publishing_date}
+              </VideoDesc>
               <AvatarContainer>
                 <AvatarImg
                   src="https://yt3.ggpht.com/W-kunEo7MD828DqKtSFMKRg8GsrEHSaroe31ZI54t6qgcWEyCGv8UsFeIRAE69E3zC3LLlFF3w=s88-c-k-c0x00ffffff-no-rj"
@@ -70,7 +102,7 @@ const Feeds = () => {
                 />
                 <AvatarText>Sai Ashish</AvatarText>
               </AvatarContainer>
-              <VideoDesc>Jnjjj.</VideoDesc>
+              <VideoDesc>{data.description}</VideoDesc>
             </VideoContent>
           </FeedsContainer>
         ))}

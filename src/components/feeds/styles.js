@@ -79,7 +79,6 @@ export const VideoContainer = styled.div`
 `;
 
 export const VideoImg = styled.img`
-  background: red;
   cursor: pointer;
   width: 360px;
   max-width: 360px;
