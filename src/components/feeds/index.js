@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Container,
   TagsContainer,
@@ -21,8 +21,7 @@ import {
 } from "./styles";
 
 import FiltersSvg from "../../assets/filters.svg";
-import axios from "axios";
-import Moment from "react-moment";
+import { useStore } from "../../store";
 
 const tags = [
   "All",
@@ -35,56 +34,36 @@ const tags = [
   "Playlists",
 ];
 
-const API_URL = "http://localhost:8000/api/u/youtube/videos/?limit=10";
+const PROFILE_PIC = "https://yt3.ggpht.com/W-kunEo7MD828DqKtSFMKRg8GsrEHSaroe31ZI54t6qgcWEyCGv8UsFeIRAE69E3zC3LLlFF3w=s88-c-k-c0x00ffffff-no-rj";
 
 const Feeds = () => {
-  const [data, setData] = useState([]);
+  const {
+    state: { videos },
+  } = useStore();
 
-  function fetchYTVideos() {
-    axios(API_URL)
-      .then((response) => {
-        let jsonResponse = response.data.results;
-        jsonResponse = jsonResponse.map((resp) => {
-          const mdImg = resp.thumbnail_urls
-            .split(",")
-            .filter((img) => img.includes("mqdefault"))?.[0];
-          let duration = resp.duration?.slice(2, resp.duration?.length - 1);
-          duration = duration?.replace("M", ":");
-          duration = duration?.replace("H", ":");
-          return {
-            ...resp,
-            thumbnail_img: mdImg,
-            duration,
-            publishing_date: <Moment fromNow>{data.publishing_date}</Moment>,
-          };
-        });
-        setData(jsonResponse);
-      })
-      .catch((error) => console.log(error));
+  function renderTagsContent() {
+    return (
+      <TagsContent>
+        <TagsContainer>
+          {tags.map((tag) => (
+            <Tag whitebg={tag === "Videos"} key={tag}>
+              {tag}
+            </Tag>
+          ))}
+        </TagsContainer>
+        <FiltersContainer>
+          <FiltersTag>Filters</FiltersTag>
+          <FiltersImg alt="img" src={FiltersSvg} />
+        </FiltersContainer>
+      </TagsContent>
+    );
   }
-
-  useEffect(() => {
-    fetchYTVideos();
-  }, []);
 
   return (
     <Wrapper>
       <Container>
-        <TagsContent>
-          <TagsContainer>
-            {tags.map((tag) => (
-              <Tag whitebg={tag === "Videos"} key={tag}>
-                {tag}
-              </Tag>
-            ))}
-          </TagsContainer>
-          <FiltersContainer>
-            <FiltersTag>Filters</FiltersTag>
-            <FiltersImg alt="img" src={FiltersSvg} />
-          </FiltersContainer>
-        </TagsContent>
-
-        {data?.map((data) => (
+        {renderTagsContent()}
+        {videos?.map((data) => (
           <FeedsContainer key={data.id}>
             <VideoContainer>
               <VideoImg src={data.thumbnail_img} alt="img" />
@@ -97,7 +76,7 @@ const Feeds = () => {
               </VideoDesc>
               <AvatarContainer>
                 <AvatarImg
-                  src="https://yt3.ggpht.com/W-kunEo7MD828DqKtSFMKRg8GsrEHSaroe31ZI54t6qgcWEyCGv8UsFeIRAE69E3zC3LLlFF3w=s88-c-k-c0x00ffffff-no-rj"
+                  src={PROFILE_PIC}
                   alt="img"
                 />
                 <AvatarText>Sai Ashish</AvatarText>

@@ -69,6 +69,7 @@ export const FeedsContainer = styled.div`
   position: relative;
   display: flex;
   align-items: flex-start;
+  cursor: pointer;
 `;
 
 export const VideoContainer = styled.div`
