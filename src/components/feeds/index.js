@@ -64,8 +64,11 @@ const Feeds = () => {
               <VideoTitle>Jnjjj</VideoTitle>
               <VideoDesc>59 views • 4 years ago</VideoDesc>
               <AvatarContainer>
-                <AvatarImg src="https://yt3.ggpht.com/ytc/AIdro_kYmnlAdVZtz4kEPAVUCBA4-4RTTKBjbHLGHQ=s68-c-k-c0x00ffffff-no-rj" alt="img" />
-                <AvatarText>Nasir Amin</AvatarText>
+                <AvatarImg
+                  src="https://yt3.ggpht.com/W-kunEo7MD828DqKtSFMKRg8GsrEHSaroe31ZI54t6qgcWEyCGv8UsFeIRAE69E3zC3LLlFF3w=s88-c-k-c0x00ffffff-no-rj"
+                  alt="img"
+                />
+                <AvatarText>Sai Ashish</AvatarText>
               </AvatarContainer>
               <VideoDesc>Jnjjj.</VideoDesc>
             </VideoContent>
