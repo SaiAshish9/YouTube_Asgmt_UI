@@ -14,7 +14,7 @@ https://drive.google.com/file/d/1JuYbYvOfDN1g_P24UMP3DLRzRkAsXoFv/view?usp=shari
 Assignment Link:
 https://fampay.notion.site/Backend-Assignment-FamPay-32aa100dbd8a4479878f174ad8f9d990
 
-### Installation Steps
+### Installation Steps:
 
 Run the following commands inside project's root directory:
 
@@ -28,7 +28,7 @@ https://github.com/SaiAshish9/YouTube_Asgmt_API
 
 <img width="1440" alt="Youtube Assignment" src="https://github.com/SaiAshish9/YouTube_Asgmt_UI/assets/43849911/698b68bc-768b-40ce-9a4c-dffcb141132f">
 
-### App Functionlity Sample
+### App Functionlity Sample:
 
 https://github.com/SaiAshish9/YouTube_Asgmt_UI/assets/43849911/e29d5c7f-16f9-46bf-be73-4ba6c87c3bf4
 
